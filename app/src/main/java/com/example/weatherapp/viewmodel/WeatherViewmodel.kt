@@ -10,9 +10,7 @@ import com.example.weatherapp.model.Weather
 import com.example.weatherapplication.repository.WeatherRepository
 
 import kotlinx.coroutines.launch
-
-
-
+import javax.inject.Inject
 
 
 class WeatherViewmodel

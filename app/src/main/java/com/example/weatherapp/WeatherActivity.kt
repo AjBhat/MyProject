@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapplication.viewmodel.WeatherViewmodel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class WeatherActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding

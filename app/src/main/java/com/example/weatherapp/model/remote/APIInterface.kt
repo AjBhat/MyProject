@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface APIInterface {
 
-    @GET("/weather")
+    @GET("weather")
     suspend fun getWeather(
         @Query("q") city:String=city_name,
         @Query("APPID") appid:String=APIID,
