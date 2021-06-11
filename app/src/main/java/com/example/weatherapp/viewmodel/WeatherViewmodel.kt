@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.weatherapp.model.Weather
+import com.example.weatherapp.utils.Resource
 
 
 import com.example.weatherapplication.repository.WeatherRepository
@@ -18,8 +19,8 @@ class WeatherViewmodel
 
 
 
-    private val _resp = MutableLiveData<Weather>()
-    val weatherResp: LiveData<Weather>
+    private val _resp = MutableLiveData<Resource<Weather>>()
+    val weatherResp: LiveData<Resource<Weather>>
         get() = _resp
 
     init {
@@ -28,9 +29,10 @@ class WeatherViewmodel
 
 
     private  fun getWeather() = viewModelScope.launch{
+        _resp.postValue(Resource.loading(null))
         weatherRepository.getWeather().let { response ->
             if (response.isSuccessful){
-                _resp.postValue(response.body())
+                _resp.postValue(Resource.success(response.body()))
             }else{
                 Log.d("TAG","getwether error: ${response.message()}")
             }
