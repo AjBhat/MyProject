@@ -8,4 +8,6 @@ class WeatherRepository
 @Inject constructor(private val apiInterface: APIInterface){
 
     suspend fun getWeather() = apiInterface.getWeather()
+
+    suspend fun getForecast() = apiInterface.getForecast()
 }
