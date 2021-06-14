@@ -1,5 +1,6 @@
 package com.example.weatherapp.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.model.ForecastList
 import com.example.weatherapp.utils.Constant
+import com.example.weatherapp.utils.ErrorActivity
 import com.example.weatherapp.utils.ProgressDialog
 import com.example.weatherapp.utils.Status
 import com.example.weatherapplication.viewmodel.WeatherViewmodel
@@ -57,7 +59,10 @@ class WeatherActivity : AppCompatActivity() {
                     progressDialog?.show()
                 }
                 Status.ERROR -> {
-
+                    progressDialog?.show()
+                    var intent = Intent(applicationContext,ErrorActivity::class.java)
+                    startActivity(intent)
+                    progressDialog?.dismiss()
                 }
             }
         })
@@ -82,7 +87,10 @@ class WeatherActivity : AppCompatActivity() {
                     }
                 }
                 Status.ERROR -> {
-
+                    progressDialog?.show()
+                    var intent = Intent(applicationContext,ErrorActivity::class.java)
+                    startActivity(intent)
+                    progressDialog?.dismiss()
                 }
             }
         })
